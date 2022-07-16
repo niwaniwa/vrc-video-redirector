@@ -1,0 +1,17 @@
+version: '3'
+services:
+  url-redirector:
+    build: .
+    ports:
+     - "8080:8080"
+#    command: 
+#      go run *.go --port 80 --url-root /path/to/vvr/ --ytdlp-path /go/src/app/lib/yt-dlp
+    tty: true
+    environment:
+      VIRTUAL_HOST: qst.niri.la
+      LETSENCRYPT_HOST: qst.niri.la
+      LETSENCRYPT_EMAIL: info@niri.la
+networks:
+  default:
+    external: true 
+    name: nginx-proxy_default
